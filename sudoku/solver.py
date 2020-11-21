@@ -109,7 +109,7 @@ class Sudoku:
                 continue
             cell = self.array[index][column]
             if cell.value is None and cell.remove_possible(value):
-                self.queue.put((row, index))
+                self.queue.put((index, column))
 
         # update dimension*dimension block
         block_row_start = (row // self.dimension) * self.dimension
@@ -121,7 +121,7 @@ class Sudoku:
                     continue
                 cell = self.array[row_index][column_index]
                 if cell.value is None and cell.remove_possible(value):
-                    self.queue.put((row, index))
+                    self.queue.put((row_index, column_index))
 
     def find_islands(self):
         self.find_row_islands()
